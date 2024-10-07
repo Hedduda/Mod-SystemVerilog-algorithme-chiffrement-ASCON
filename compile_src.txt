@@ -1,0 +1,43 @@
+//compilation du package
+vlog -sv +acc -work LIB_RTL SRC/RTL/ascon_pack.sv
+
+//compilation de pC
+vlog -sv +acc -work LIB_RTL SRC/RTL/permitation_constante.sv
+vlog -sv +acc -work LIB_BENCH -L LIB_RTL SRC/BENCH/permitation_constante_tb.sv
+vsim -L LIB_RTL LIB_BENCH.permitation_constante_tb
+
+//compilation de S-box
+vlog -sv +acc -work LIB_RTL SRC/RTL/sbox.sv
+vlog -sv +acc -work LIB_BENCH SRC/BENCH/sbox_tb.sv
+vsim -L LIB_RTL LIB_BENCH.sbox_tb
+
+//compilation de pS
+vlog -sv +acc -work LIB_RTL SRC/RTL/permitation_substitution.sv
+vlog -sv +acc -work LIB_BENCH -L LIB_RTL SRC/BENCH/permitation_substitution_tb.sv
+vsim -L LIB_RTL LIB_BENCH.permitation_substitution_tb
+
+//compilation de pL
+vlog -sv +acc -work LIB_RTL SRC/RTL/permitation_diffusion.sv
+vlog -sv +acc -work LIB_BENCH -L LIB_RTL SRC/BENCH/permitation_diffusion_tb.sv
+vsim -L LIB_RTL LIB_BENCH.permitation_diffusion_tb
+
+//compilation de permitation
+vlog -sv +acc -work LIB_RTL SRC/RTL/permitation.sv
+vlog -sv +acc -work LIB_BENCH -L LIB_RTL SRC/BENCH/permitation_tb.sv
+vsim -L LIB_RTL LIB_BENCH.permitation_tb
+
+//compilation de permutation xor
+vlog -sv +acc -work LIB_RTL SRC/RTL/permitation_xor.sv
+vlog -sv +acc -work LIB_BENCH -L LIB_RTL SRC/BENCH/permitation_xor_tb.sv
+vsim -L LIB_RTL LIB_BENCH.permitation_xor_tb
+
+//compilation de cpt_module
+vlog -sv +acc -work LIB_RTL SRC/RTL/cpt_module.sv
+
+//compilation de fsm_module
+vlog -sv +acc -work LIB_RTL SRC/RTL/fsm_module.sv
+
+//compilation de toplevel
+vlog -sv +acc -work LIB_RTL SRC/RTL/toplevel.sv
+vlog -sv +acc -work LIB_BENCH -L LIB_RTL SRC/BENCH/toplevel_tb.sv
+vsim -L LIB_RTL LIB_BENCH.toplevel_tb
