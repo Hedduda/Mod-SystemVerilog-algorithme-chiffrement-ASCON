@@ -1,0 +1,33 @@
+`timescale 1ns/1ps
+
+module permitation import ascon_pack::*;
+   (
+    input logic clock_i,
+    input logic resetb_i,
+    input logic select_i,
+    input type_state permutation_i,
+    input logic [3:0] roundp_i,
+    output type_state permutation_o
+    );
+
+   type_state state_i, state_o, state__pc;
+   logic   select_in;
+   assign state_pc = (select_in) ? state_in : state_o;
+
+   type_state state_ps;
+   logic [3:0] round_pc;
+   permutation_constante pc(
+			    .constante_add_i(state_pc),
+			    .round_i(round_pc),
+			    .constante_add_o(state_ps)
+			    );
+
+   type_state state_pl;
+   permutation_substitution ps(
+			       .substitution_i(state_ps),
+			       .substitution_o(state_pl)
+			       );
+   type_state state_p;
+   permutation_diffusion pl(
+			    .
+   
